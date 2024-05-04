@@ -22,8 +22,4 @@ jobs:
           port: 2226
           script: |
             cd cilabpython
-            git pull
-
-            # run apps
-            pm2 del app
-            pm2 start app.py --interpreter python3
+            
