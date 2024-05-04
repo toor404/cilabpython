@@ -25,4 +25,5 @@ jobs:
             git pull
 
             # run apps
-            python3 app.py
+            pm2 del app
+            pm2 start app.py --interpreter python3
