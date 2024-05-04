@@ -22,4 +22,5 @@ jobs:
           port: 2226
           script: |
             cd cilabpython
+            git pull
             
