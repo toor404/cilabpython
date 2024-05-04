@@ -1,0 +1,28 @@
+name: Continuous Deployment
+
+on:
+  workflow_run:
+    workflows: ["Python CI"]
+    types:
+      - completed
+
+jobs:
+  cd:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Deploy Using ssh
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: 22
+          script: |
+            cd cilabpython
+            git pull
+
+            # run apps
+            python3 app.py
