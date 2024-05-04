@@ -4,3 +4,4 @@ mantaps
 mmmmm
 ya allah
 aw
+as
